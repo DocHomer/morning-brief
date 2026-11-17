@@ -3,7 +3,7 @@
   <channel>
     <title>The Morning Brief</title>
     <link>https://dochomer.github.io/morning-brief/</link>
-    <description>A private daily news briefing: sports, world, U.S., Kentucky and Louisville news, plus the Bengals, Bills, Bearcats, Cardinals and Wildcats.</description>
+    <description>A private daily news briefing: sports, world, U.S., Kentucky and Louisville news, plus the Bengals, Bills, U.S. men's national soccer team, Bearcats, Cardinals and Wildcats.</description>
     <language>en-us</language>
     <itunes:author>The Morning Brief</itunes:author>
     <itunes:image href="https://dochomer.github.io/morning-brief/cover.png"/>
@@ -12,7 +12,7 @@
     <item>
       <title>Tuesday, November 17, 2026</title>
       <guid isPermaLink="false">morning-brief-2026-11-17</guid>
-      <pubDate>Tue, 17 Nov 2026 14:20:26 +0000</pubDate>
+      <pubDate>Tue, 17 Nov 2026 14:57:29 +0000</pubDate>
       <enclosure url="https://github.com/DocHomer/morning-brief/releases/download/ep-2026-11-17/morning-brief-2026-11-17.mp3" length="6943536" type="audio/mpeg"/>
       <itunes:duration>1157</itunes:duration>
       <description>Good morning, this is The Morning Brief for Tuesday, November 17. Today: the Bengals beat the Steelers 38 to 18 on Sunday night to move to 7 and 2, Ukraine strikes the Kerch Bridge to Crimea, the Senate advances a major permitting bill, and Congressman James Comer launches a run for Kentucky governor.
