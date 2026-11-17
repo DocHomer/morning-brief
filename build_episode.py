@@ -24,6 +24,7 @@ EPISODES_JSON = DOCS / "episodes.json"
 
 VOICE = os.environ.get("VOICE", "en-US-AndrewMultilingualNeural")
 RATE = os.environ.get("RATE", "+0%")
+PIPER_VOICE = os.environ.get("PIPER_VOICE", "en_US-ryan-high")
 KEEP = int(os.environ.get("KEEP_EPISODES", "21"))
 SHOW_TITLE = "The Morning Brief"
 SHOW_DESC = "A private daily news briefing: sports, world, U.S., Kentucky and Louisville news, plus the Bengals, Bills, Bearcats, Cardinals and Wildcats."
@@ -48,12 +49,41 @@ def clean_for_speech(text: str) -> str:
     return re.sub(r"\n{3,}", "\n\n", text).strip()
 
 
-async def synthesize(text: str, out: Path) -> None:
+async def _edge(text: str, out: Path) -> None:
     await edge_tts.Communicate(text, VOICE, rate=RATE).save(str(out))
 
 
+def synthesize(text: str, out: Path) -> None:
+    """Free Microsoft Edge voice first; open-source Piper voice as a fallback."""
+    for attempt in range(3):
+        try:
+            asyncio.run(_edge(text, out))
+            if out.exists() and out.stat().st_size > 100_000:
+                print("Voice: Edge", VOICE)
+                return
+        except Exception as exc:  # noqa: BLE001
+            print(f"Edge voice attempt {attempt + 1} failed: {exc!r}")
+    print("Falling back to Piper voice", PIPER_VOICE)
+    import wave
+    from piper import PiperVoice
+    vdir = ROOT / ".voices"
+    vdir.mkdir(exist_ok=True)
+    model = vdir / f"{PIPER_VOICE}.onnx"
+    if not model.exists():
+        subprocess.run([sys.executable, "-m", "piper.download_voices", "--download-dir", str(vdir), PIPER_VOICE], check=True)
+    voice = PiperVoice.load(str(model))
+    wav = out.with_suffix(".wav")
+    with wave.open(str(wav), "wb") as w:
+        voice.synthesize_wav(text, w)
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(wav), "-ac", "1", "-b:a", "64k", str(out)], check=True)
+    wav.unlink()
+
+
 def gh(*args: str) -> str:
-    return subprocess.run(["gh", *args], check=True, capture_output=True, text=True).stdout
+    r = subprocess.run(["gh", *args], capture_output=True, text=True)
+    if r.returncode:
+        raise RuntimeError(f"gh {' '.join(args[:2])} failed: {r.stderr.strip()}")
+    return r.stdout
 
 
 def main() -> None:
@@ -64,7 +94,7 @@ def main() -> None:
     sources = sources_file.read_text().strip() if sources_file.exists() else ""
 
     mp3 = ROOT / f"morning-brief-{date}.mp3"
-    asyncio.run(synthesize(text, mp3))
+    synthesize(text, mp3)
     seconds = int(MP3(mp3).info.length)
 
     tag = f"ep-{date}"
@@ -128,4 +158,10 @@ def render_feed(episodes: list[dict]) -> str:
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception:
+        import traceback
+        DOCS.mkdir(exist_ok=True)
+        (DOCS / "last-error.txt").write_text(traceback.format_exc())
+        raise
