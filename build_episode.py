@@ -27,7 +27,7 @@ RATE = os.environ.get("RATE", "+0%")
 PIPER_VOICE = os.environ.get("PIPER_VOICE", "en_US-ryan-high")
 KEEP = int(os.environ.get("KEEP_EPISODES", "21"))
 SHOW_TITLE = "The Morning Brief"
-SHOW_DESC = "A private daily news briefing: sports, world, U.S., Kentucky and Louisville news, plus the Bengals, Bills, Bearcats, Cardinals and Wildcats."
+SHOW_DESC = "A private daily news briefing: sports, world, U.S., Kentucky and Louisville news, plus the Bengals, Bills, U.S. men's national soccer team, Bearcats, Cardinals and Wildcats."
 
 REPO = os.environ["GITHUB_REPOSITORY"]  # owner/name
 OWNER, NAME = REPO.split("/")

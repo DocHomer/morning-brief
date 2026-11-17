@@ -8,7 +8,8 @@ daily audio news podcast for one listener in the Louisville, Kentucky area.
    for every segment below. Use web search. Prefer wire services and straight-news
    sources (AP, Reuters, official team/league/university sites, beat reporters,
    WDRB, WLKY, WHAS11, Courier Journal, Lexington Herald-Leader, Kentucky Lantern,
-   Cincinnati Enquirer, Buffalo News). Check that every fact you use is in a source.
+   Cincinnati Enquirer, Buffalo News, and for soccer ussoccer.com, ESPN FC,
+   The Athletic, AP). Check that every fact you use is in a source.
 2. Write the episode script as plain spoken text in `scripts/YYYY-MM-DD.txt`
    (today's date, Eastern time).
 3. Write a short list of sources (one per line, `Title — URL`) to
@@ -33,9 +34,9 @@ little news, keep it short and give the time to the Bengals.
 ## Segment order
 1. **Open** (2–3 sentences): "Good morning, this is The Morning Brief for
    [weekday, month day]." One-line preview of the top items.
-2. **Sports roundup** (~2 min): the biggest results and storylines across the NFL,
+2. **Sports roundup** (~1.5 min): the biggest results and storylines across the NFL,
    NBA, college football, college basketball, MLB/NHL/soccer as in season.
-   Do not repeat items covered in the team segments below.
+   Do not repeat items covered in the team segments below, including the USMNT.
 3. **World news** (~2 min): 4–6 top international stories.
 4. **U.S. news** (~2 min): 4–6 top national stories.
 5. **Kentucky news** (~1.5 min): state government, economy, weather events, notable stories.
@@ -46,15 +47,22 @@ little news, keep it short and give the time to the Bengals.
    playoff picture, what beat reporters are noting. In the offseason: draft,
    free agency, contracts.
 8. **Buffalo Bills** (~1 min): result/next game, injuries, key news.
-9. **Cincinnati Bearcats** (~1 min): men's basketball and football.
-10. **Louisville Cardinals** (~1 min): men's basketball and football.
-11. **Kentucky Wildcats** (~1 min): men's basketball and football.
-   For 9–11: results with scores, next game (opponent, day, time ET, TV),
+9. **U.S. Men's National Team — in depth** (~2 min): latest match result with
+   scorers, next match (opponent, date, time ET, TV/stream, venue), roster call-ups
+   and omissions, player injuries and club form of key players, head coach quotes,
+   FIFA ranking changes, World Cup qualifying or tournament context, and what
+   soccer reporters are noting. Between international windows, cover notable club
+   news for core players and any federation news. If there is truly nothing new,
+   say so in one sentence and give the time to the Bengals.
+10. **Cincinnati Bearcats** (~1 min): men's basketball and football.
+11. **Louisville Cardinals** (~1 min): men's basketball and football.
+12. **Kentucky Wildcats** (~1 min): men's basketball and football.
+   For 10–12: results with scores, next game (opponent, day, time ET, TV),
    rankings, injuries, recruiting/portal news when significant. When a sport is out
    of season, one sentence or skip.
-12. **Positive news** (~1.5 min): 2–3 genuinely uplifting true stories from the past
+13. **Positive news** (~1.5 min): 2–3 genuinely uplifting true stories from the past
    few days (kindness, science/medical progress, community wins), ideally one local.
-13. **Sign-off**: one sentence. "That's The Morning Brief. Have a great day."
+14. **Sign-off**: one sentence. "That's The Morning Brief. Have a great day."
 
 ## Writing for the ear
 - Plain text only. No markdown, bullets, headings, emoji, URLs or parentheses.
