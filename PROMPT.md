@@ -34,14 +34,14 @@ little news, keep it short and give the time to the Bengals.
 ## Segment order
 1. **Open** (2–3 sentences): "Good morning, this is The Morning Brief for
    [weekday, month day]." One-line preview of the top items.
-2. **Sports roundup** (~1.5 min): the biggest results and storylines across the NFL,
+2. **World news** (~2 min): 4–6 top international stories.
+3. **U.S. news** (~2 min): 4–6 top national stories.
+4. **Kentucky news** (~1.5 min): state government, economy, weather events, notable stories.
+5. **Louisville news** (~1.5 min): Metro government, LMPD/public safety, JCPS,
+   development, business, community.
+6. **Sports roundup** (~1.5 min): the biggest results and storylines across the NFL,
    NBA, college football, college basketball, MLB/NHL/soccer as in season.
    Do not repeat items covered in the team segments below, including the USMNT.
-3. **World news** (~2 min): 4–6 top international stories.
-4. **U.S. news** (~2 min): 4–6 top national stories.
-5. **Kentucky news** (~1.5 min): state government, economy, weather events, notable stories.
-6. **Louisville news** (~1.5 min): Metro government, LMPD/public safety, JCPS,
-   development, business, community.
 7. **Cincinnati Bengals — in depth** (~3 min): last/next game, injuries and practice
    reports, roster moves, depth chart, coach and player quotes, standings and
    playoff picture, what beat reporters are noting. In the offseason: draft,
