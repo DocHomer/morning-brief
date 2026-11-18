@@ -34,35 +34,50 @@ little news, keep it short and give the time to the Bengals.
 ## Segment order
 1. **Open** (2–3 sentences): "Good morning, this is The Morning Brief for
    [weekday, month day]." One-line preview of the top items.
-2. **World news** (~2 min): 4–6 top international stories.
-3. **U.S. news** (~2 min): 4–6 top national stories.
-4. **Kentucky news** (~1.5 min): state government, economy, weather events, notable stories.
-5. **Louisville news** (~1.5 min): Metro government, LMPD/public safety, JCPS,
+2. **Local weather** (~1 min): today's forecast and the next 3 days for the
+   listener's location. First read `weather/latest.json` in the repo. It is written
+   by the listener's phone at about 4:40 a.m. Eastern with the National Weather
+   Service forecast for wherever the phone is. Use it only if `received_utc` is from
+   the last 6 hours; name the place ("In Lexington this morning...") using `city`
+   or `nws_place`. If the file is missing, stale, or has an `error`, use the
+   National Weather Service forecast for Louisville, Kentucky instead
+   (https://forecast.weather.gov/MapClick.php?lat=38.25&lon=-85.76, via web search or
+   fetch), and if `city` is present but there are no periods, look up that city's
+   NWS forecast. Cover: today's high, sky conditions, rain or snow chances and wind
+   worth noting, tonight's low, then one sentence each for the next three days
+   (highs, lows, precipitation). Mention any active weather alerts first. Round
+   temperatures, say "degrees", and don't read wind direction abbreviations.
+   Add the forecast page to the sources file.
+3. **World news** (~2 min): 4–6 top international stories.
+4. **U.S. news** (~2 min): 4–6 top national stories.
+5. **Kentucky news** (~1.5 min): state government, economy, notable stories, and
+   significant weather events (storm damage, flooding), but not the routine forecast.
+6. **Louisville news** (~1.5 min): Metro government, LMPD/public safety, JCPS,
    development, business, community.
-6. **Sports roundup** (~1.5 min): the biggest results and storylines across the NFL,
+7. **Sports roundup** (~1.5 min): the biggest results and storylines across the NFL,
    NBA, college football, college basketball, MLB/NHL/soccer as in season.
    Do not repeat items covered in the team segments below, including the USMNT.
-7. **Cincinnati Bengals — in depth** (~3 min): last/next game, injuries and practice
+8. **Cincinnati Bengals — in depth** (~3 min): last/next game, injuries and practice
    reports, roster moves, depth chart, coach and player quotes, standings and
    playoff picture, what beat reporters are noting. In the offseason: draft,
    free agency, contracts.
-8. **Buffalo Bills** (~1 min): result/next game, injuries, key news.
-9. **U.S. Men's National Team — in depth** (~2 min): latest match result with
+9. **Buffalo Bills** (~1 min): result/next game, injuries, key news.
+10. **U.S. Men's National Team — in depth** (~2 min): latest match result with
    scorers, next match (opponent, date, time ET, TV/stream, venue), roster call-ups
    and omissions, player injuries and club form of key players, head coach quotes,
    FIFA ranking changes, World Cup qualifying or tournament context, and what
    soccer reporters are noting. Between international windows, cover notable club
    news for core players and any federation news. If there is truly nothing new,
    say so in one sentence and give the time to the Bengals.
-10. **Cincinnati Bearcats** (~1 min): men's basketball and football.
-11. **Louisville Cardinals** (~1 min): men's basketball and football.
-12. **Kentucky Wildcats** (~1 min): men's basketball and football.
-   For 10–12: results with scores, next game (opponent, day, time ET, TV),
+11. **Cincinnati Bearcats** (~1 min): men's basketball and football.
+12. **Louisville Cardinals** (~1 min): men's basketball and football.
+13. **Kentucky Wildcats** (~1 min): men's basketball and football.
+   For 11–13: results with scores, next game (opponent, day, time ET, TV),
    rankings, injuries, recruiting/portal news when significant. When a sport is out
    of season, one sentence or skip.
-13. **Positive news** (~1.5 min): 2–3 genuinely uplifting true stories from the past
+14. **Positive news** (~1.5 min): 2–3 genuinely uplifting true stories from the past
    few days (kindness, science/medical progress, community wins), ideally one local.
-14. **Sign-off**: one sentence. "That's The Morning Brief. Have a great day."
+15. **Sign-off**: one sentence. "That's The Morning Brief. Have a great day."
 
 ## Writing for the ear
 - Plain text only. No markdown, bullets, headings, emoji, URLs or parentheses.
