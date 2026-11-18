@@ -39,21 +39,62 @@ def parse_coord(value) -> float | None:
     return round(num, 4)
 
 
+def mask(obj):
+    if isinstance(obj, dict):
+        return {k: mask(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [mask(v) for v in obj]
+    return re.sub(r"\d", "9", repr(obj))
+
+
+def flatten(obj, out=None):
+    """Collect key -> value pairs from any nesting (keys lowercased), plus loose strings."""
+    out = out if out is not None else {"_strings": []}
+    if isinstance(obj, dict):
+        for k, v in obj.items():
+            if isinstance(v, (dict, list)):
+                flatten(v, out)
+            else:
+                out.setdefault(str(k).strip().lower(), v)
+                if isinstance(v, str):
+                    out["_strings"].append(v)
+    elif isinstance(obj, list):
+        for v in obj:
+            flatten(v, out)
+    elif isinstance(obj, str):
+        out["_strings"].append(obj)
+    return out
+
+
+def extract(payload):
+    flat = flatten(payload)
+    lat = parse_coord(flat.get("lat", flat.get("latitude")))
+    lon = parse_coord(flat.get("lon", flat.get("lng", flat.get("longitude"))))
+    if lat is None or lon is None:
+        # Fallback: any text holding two coordinate-like numbers, e.g. "38.25, -85.75".
+        for text in flat["_strings"]:
+            nums = re.findall(r"-?\d{1,3}\.\d+", text)
+            if len(nums) >= 2:
+                lat, lon = round(float(nums[0]), 4), round(float(nums[1]), 4)
+                break
+    city = str(flat.get("city", "") or "").strip()
+    state = str(flat.get("state", "") or "").strip()
+    return lat, lon, city, state
+
+
 def main() -> None:
     # Read the location from the event file rather than an env var, because
     # GitHub prints step env vars in the (public) run log.
     event = json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_text())
     payload = event.get("client_payload") or event.get("inputs") or {}
-    lat, lon = parse_coord(payload.get("lat")), parse_coord(payload.get("lon"))
+    lat, lon, city, state = extract(payload)
     if lat is None or lon is None:
-        # Log only the shape of the values (digits masked) so coordinates stay private.
-        shape = {k: re.sub(r"\d", "9", repr(payload.get(k))) for k in ("lat", "lon")}
-        sys.exit(f"Could not read lat/lon. Keys: {sorted(payload)}; shapes: {shape}")
-
+        # Log only the layout of the payload, digits masked, so coordinates stay private.
+        sys.exit(f"Could not read lat/lon. Payload layout: {mask(payload)}")
     record = {
         "received_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
-        "city": str(payload.get("city", "")).strip(),
-        "state": str(payload.get("state", "")).strip(),
+        "city": city,
+        "state": state,
         "source": "National Weather Service",
         "periods": [],
     }
