@@ -95,4 +95,7 @@ little news, keep it short and give the time to the Bengals.
 - Short sentences. Say who before what.
 - Write scores as "Bengals 27, Steelers 20". Write times as "1 p.m. Eastern".
 - Spell out abbreviations the first time if a listener might not know them.
-- Leave a blank line between segments.
+- Leave a blank line between segments, and put each story in its own paragraph with a
+  blank line before the next one. The audio builder adds a 2-second pause at every blank
+  line, so a new paragraph should mean a new story or a new segment. Within one story,
+  use a single paragraph, or a few for an in-depth segment like the Bengals.

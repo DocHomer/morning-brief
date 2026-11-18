@@ -49,21 +49,40 @@ def clean_for_speech(text: str) -> str:
     return re.sub(r"\n{3,}", "\n\n", text).strip()
 
 
+PAUSE_STORY = float(os.environ.get("PAUSE_STORY", "2.0"))  # seconds between paragraphs/stories
+PAUSE_SHORT = float(os.environ.get("PAUSE_SHORT", "1.0"))  # after short lead-ins like "Now, the Bengals."
+SHORT_WORDS = 12
+SAMPLE_RATE = 24000
+
+
+def split_paragraphs(text: str) -> list[str]:
+    """Each blank-line-separated paragraph is one story or lead-in."""
+    return [" ".join(p.split()) for p in re.split(r"\n\s*\n", text) if p.strip()]
+
+
 async def _edge(text: str, out: Path) -> None:
     await edge_tts.Communicate(text, VOICE, rate=RATE).save(str(out))
 
 
-def synthesize(text: str, out: Path) -> None:
-    """Free Microsoft Edge voice first; open-source Piper voice as a fallback."""
-    for attempt in range(3):
-        try:
-            asyncio.run(_edge(text, out))
-            if out.exists() and out.stat().st_size > 100_000:
-                print("Voice: Edge", VOICE)
-                return
-        except Exception as exc:  # noqa: BLE001
-            print(f"Edge voice attempt {attempt + 1} failed: {exc!r}")
-    print("Falling back to Piper voice", PIPER_VOICE)
+async def _edge_all(chunks: list[str], outs: list[Path]) -> None:
+    sem = asyncio.Semaphore(4)
+
+    async def one(text: str, out: Path) -> None:
+        async with sem:
+            for attempt in range(3):
+                try:
+                    await _edge(text, out)
+                    if out.exists() and out.stat().st_size > 1000:
+                        return
+                except Exception as exc:  # noqa: BLE001
+                    print(f"Edge voice attempt {attempt + 1} failed: {exc!r}")
+                await asyncio.sleep(2 * (attempt + 1))
+            raise RuntimeError("Edge voice failed for a paragraph")
+
+    await asyncio.gather(*(one(t, o) for t, o in zip(chunks, outs)))
+
+
+def _piper_all(chunks: list[str], outs: list[Path]) -> None:
     import wave
     from piper import PiperVoice
     vdir = ROOT / ".voices"
@@ -72,11 +91,62 @@ def synthesize(text: str, out: Path) -> None:
     if not model.exists():
         subprocess.run([sys.executable, "-m", "piper.download_voices", "--download-dir", str(vdir), PIPER_VOICE], check=True)
     voice = PiperVoice.load(str(model))
-    wav = out.with_suffix(".wav")
-    with wave.open(str(wav), "wb") as w:
-        voice.synthesize_wav(text, w)
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(wav), "-ac", "1", "-b:a", "64k", str(out)], check=True)
-    wav.unlink()
+    for text, out in zip(chunks, outs):
+        with wave.open(str(out), "wb") as w:
+            voice.synthesize_wav(text, w)
+
+
+def _to_wav(src: Path, dst: Path) -> None:
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(src), "-ac", "1",
+                    "-ar", str(SAMPLE_RATE), "-c:a", "pcm_s16le", str(dst)], check=True)
+
+
+def _silence(seconds: float, dst: Path) -> None:
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i",
+                    f"anullsrc=r={SAMPLE_RATE}:cl=mono", "-t", f"{seconds:.2f}",
+                    "-c:a", "pcm_s16le", str(dst)], check=True)
+
+
+def synthesize(text: str, out: Path) -> None:
+    """Voice each paragraph separately, then join them with short pauses so
+    stories don't run together. Free Microsoft Edge voice first; open-source
+    Piper voice as a fallback."""
+    chunks = split_paragraphs(text)
+    work = out.parent / f".build-{out.stem}"
+    if work.exists():
+        for f in work.iterdir():
+            f.unlink()
+    work.mkdir(exist_ok=True)
+
+    raw = [work / f"{i:03d}.mp3" for i in range(len(chunks))]
+    try:
+        asyncio.run(_edge_all(chunks, raw))
+        print("Voice: Edge", VOICE)
+    except Exception as exc:  # noqa: BLE001
+        print(f"Edge voice failed ({exc!r}); falling back to Piper voice", PIPER_VOICE)
+        raw = [work / f"{i:03d}.piper.wav" for i in range(len(chunks))]
+        _piper_all(chunks, raw)
+
+    pause_long, pause_short = work / "pause_long.wav", work / "pause_short.wav"
+    _silence(PAUSE_STORY, pause_long)
+    _silence(PAUSE_SHORT, pause_short)
+
+    parts: list[Path] = []
+    for i, (chunk, src) in enumerate(zip(chunks, raw)):
+        wav = work / f"{i:03d}.wav"
+        _to_wav(src, wav)
+        parts.append(wav)
+        if i < len(chunks) - 1:
+            parts.append(pause_short if len(chunk.split()) <= SHORT_WORDS else pause_long)
+
+    listing = work / "list.txt"
+    listing.write_text("".join(f"file '{p.name}'\n" for p in parts))
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0",
+                    "-i", str(listing), "-ac", "1", "-b:a", "64k", str(out)], check=True)
+    for f in work.iterdir():
+        f.unlink()
+    work.rmdir()
+    print(f"Joined {len(chunks)} paragraphs with {PAUSE_STORY}s pauses")
 
 
 def gh(*args: str) -> str:
