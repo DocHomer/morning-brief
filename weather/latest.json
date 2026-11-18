@@ -1,24 +1,24 @@
 {
-  "received_utc": "2026-11-18T04:22:27+00:00",
+  "received_utc": "2026-11-18T09:40:11+00:00",
   "city": "Middletown",
   "state": "KY",
   "source": "National Weather Service",
   "periods": [
     {
-      "name": "Tonight",
+      "name": "Overnight",
       "temp": 33,
       "unit": "F",
       "wind": "3 mph SE",
       "precip_pct": 0,
-      "detail": "Patchy fog after 4am. Clear, with a low around 33. Southeast wind around 3 mph."
+      "detail": "Patchy fog. Clear, with a low around 33. Southeast wind around 3 mph."
     },
     {
       "name": "Wednesday",
-      "temp": 63,
+      "temp": 64,
       "unit": "F",
-      "wind": "3 mph SE",
+      "wind": "3 mph S",
       "precip_pct": 0,
-      "detail": "Patchy fog before 9am. Sunny, with a high near 63. Southeast wind around 3 mph."
+      "detail": "Patchy fog before 9am. Sunny, with a high near 64. South wind around 3 mph."
     },
     {
       "name": "Wednesday Night",
@@ -26,7 +26,7 @@
       "unit": "F",
       "wind": "3 mph SE",
       "precip_pct": 0,
-      "detail": "Mostly clear, with a low around 36. Southeast wind around 3 mph."
+      "detail": "Clear, with a low around 36. Southeast wind around 3 mph."
     },
     {
       "name": "Thursday",
@@ -38,39 +38,39 @@
     },
     {
       "name": "Thursday Night",
-      "temp": 39,
+      "temp": 38,
       "unit": "F",
       "wind": "2 mph SE",
       "precip_pct": 0,
-      "detail": "Mostly clear, with a low around 39. Southeast wind around 2 mph."
+      "detail": "Mostly clear, with a low around 38. Southeast wind around 2 mph."
     },
     {
       "name": "Friday",
       "temp": 67,
       "unit": "F",
-      "wind": "2 to 6 mph E",
+      "wind": "5 mph E",
       "precip_pct": 0,
       "detail": "Sunny, with a high near 67."
     },
     {
       "name": "Friday Night",
-      "temp": 43,
+      "temp": 40,
       "unit": "F",
       "wind": "6 mph E",
-      "precip_pct": 3,
-      "detail": "Mostly clear, with a low around 43."
+      "precip_pct": 1,
+      "detail": "Mostly clear, with a low around 40."
     },
     {
       "name": "Saturday",
       "temp": 66,
       "unit": "F",
-      "wind": "6 mph S",
-      "precip_pct": 11,
+      "wind": "5 mph SE",
+      "precip_pct": 8,
       "detail": "Mostly sunny, with a high near 66."
     }
   ],
   "nws_place": "Middletown, KY",
   "source_url": "https://forecast.weather.gov/MapClick.php?lat=38.2&lon=-85.5",
-  "forecast_updated": "2026-11-18T02:01:14+00:00",
+  "forecast_updated": "2026-11-18T06:26:06+00:00",
   "alerts": []
 }
