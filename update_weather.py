@@ -8,6 +8,7 @@ Exact coordinates are NOT saved; only the place name and the forecast are.
 import datetime as dt
 import json
 import os
+import re
 import sys
 import urllib.request
 from pathlib import Path
@@ -22,16 +23,32 @@ def get(url: str) -> dict:
         return json.load(r)
 
 
+def parse_coord(value) -> float | None:
+    """Accept numbers or Shortcuts-formatted text like "38.25", "38,25", "38.25°", "38.25 N"."""
+    if isinstance(value, (int, float)):
+        return round(float(value), 4)
+    if not isinstance(value, str):
+        return None
+    text = value.strip().replace("\u2212", "-")
+    m = re.search(r"-?\d+(?:[.,]\d+)?", text)
+    if not m:
+        return None
+    num = float(m.group(0).replace(",", "."))
+    if re.search(r"\b[SW]\b", text.upper()) and num > 0:
+        num = -num
+    return round(num, 4)
+
+
 def main() -> None:
     # Read the location from the event file rather than an env var, because
     # GitHub prints step env vars in the (public) run log.
     event = json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_text())
     payload = event.get("client_payload") or event.get("inputs") or {}
-    try:
-        lat = round(float(str(payload["lat"]).strip()), 4)
-        lon = round(float(str(payload["lon"]).strip()), 4)
-    except (KeyError, ValueError):
-        sys.exit(f"Payload missing lat/lon: {sorted(payload)}")
+    lat, lon = parse_coord(payload.get("lat")), parse_coord(payload.get("lon"))
+    if lat is None or lon is None:
+        # Log only the shape of the values (digits masked) so coordinates stay private.
+        shape = {k: re.sub(r"\d", "9", repr(payload.get(k))) for k in ("lat", "lon")}
+        sys.exit(f"Could not read lat/lon. Keys: {sorted(payload)}; shapes: {shape}")
 
     record = {
         "received_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
