@@ -1,76 +1,76 @@
 {
-  "received_utc": "2026-11-18T03:22:32+00:00",
-  "city": "Lexington",
+  "received_utc": "2026-11-18T04:22:27+00:00",
+  "city": "Middletown",
   "state": "KY",
   "source": "National Weather Service",
   "periods": [
     {
       "name": "Tonight",
-      "temp": 32,
+      "temp": 33,
       "unit": "F",
       "wind": "3 mph SE",
       "precip_pct": 0,
-      "detail": "Patchy fog after 4am. Clear, with a low around 32. Southeast wind around 3 mph."
+      "detail": "Patchy fog after 4am. Clear, with a low around 33. Southeast wind around 3 mph."
     },
     {
       "name": "Wednesday",
       "temp": 63,
       "unit": "F",
-      "wind": "2 mph S",
+      "wind": "3 mph SE",
       "precip_pct": 0,
-      "detail": "Patchy fog before 9am. Sunny, with a high near 63. South wind around 2 mph."
+      "detail": "Patchy fog before 9am. Sunny, with a high near 63. Southeast wind around 3 mph."
     },
     {
       "name": "Wednesday Night",
       "temp": 36,
       "unit": "F",
-      "wind": "2 mph SE",
+      "wind": "3 mph SE",
       "precip_pct": 0,
-      "detail": "Clear, with a low around 36. Southeast wind around 2 mph."
+      "detail": "Mostly clear, with a low around 36. Southeast wind around 3 mph."
     },
     {
       "name": "Thursday",
       "temp": 65,
       "unit": "F",
-      "wind": "0 to 3 mph S",
+      "wind": "3 mph S",
       "precip_pct": 0,
-      "detail": "Sunny, with a high near 65. South wind 0 to 3 mph."
+      "detail": "Sunny, with a high near 65. South wind around 3 mph."
     },
     {
       "name": "Thursday Night",
-      "temp": 40,
+      "temp": 39,
       "unit": "F",
       "wind": "2 mph SE",
       "precip_pct": 0,
-      "detail": "Mostly clear, with a low around 40. Southeast wind around 2 mph."
+      "detail": "Mostly clear, with a low around 39. Southeast wind around 2 mph."
     },
     {
       "name": "Friday",
-      "temp": 65,
+      "temp": 67,
       "unit": "F",
       "wind": "2 to 6 mph E",
       "precip_pct": 0,
-      "detail": "Sunny, with a high near 65."
+      "detail": "Sunny, with a high near 67."
     },
     {
       "name": "Friday Night",
       "temp": 43,
       "unit": "F",
-      "wind": "5 mph E",
-      "precip_pct": 2,
+      "wind": "6 mph E",
+      "precip_pct": 3,
       "detail": "Mostly clear, with a low around 43."
     },
     {
       "name": "Saturday",
       "temp": 66,
       "unit": "F",
-      "wind": "5 mph SE",
-      "precip_pct": 8,
+      "wind": "6 mph S",
+      "precip_pct": 11,
       "detail": "Mostly sunny, with a high near 66."
     }
   ],
-  "nws_place": "Lexington-Fayette, KY",
-  "source_url": "https://forecast.weather.gov/MapClick.php?lat=38.04&lon=-84.50",
+  "nws_place": "Middletown, KY",
+  "source_url": "https://forecast.weather.gov/MapClick.php?lat=38.24&lon=-85.52",
   "forecast_updated": "2026-11-18T02:01:14+00:00",
   "alerts": []
 }
