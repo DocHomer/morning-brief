@@ -23,7 +23,10 @@ def get(url: str) -> dict:
 
 
 def main() -> None:
-    payload = json.loads(os.environ.get("PAYLOAD") or "{}")
+    # Read the location from the event file rather than an env var, because
+    # GitHub prints step env vars in the (public) run log.
+    event = json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_text())
+    payload = event.get("client_payload") or event.get("inputs") or {}
     try:
         lat = round(float(str(payload["lat"]).strip()), 4)
         lon = round(float(str(payload["lon"]).strip()), 4)

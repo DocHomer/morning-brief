@@ -29,8 +29,6 @@ jobs:
         with:
           python-version: "3.12"
       - name: Fetch forecast
-        env:
-          PAYLOAD: ${{ github.event_name == 'workflow_dispatch' && toJSON(github.event.inputs) || toJSON(github.event.client_payload) }}
         run: python update_weather.py
       - name: Commit forecast
         run: |
