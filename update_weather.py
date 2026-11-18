@@ -102,7 +102,7 @@ def main() -> None:
         point = get(f"https://api.weather.gov/points/{lat},{lon}")["properties"]
         rel = point.get("relativeLocation", {}).get("properties", {})
         record["nws_place"] = f"{rel.get('city', '')}, {rel.get('state', '')}".strip(", ")
-        record["source_url"] = f"https://forecast.weather.gov/MapClick.php?lat={lat:.2f}&lon={lon:.2f}"
+        record["source_url"] = f"https://forecast.weather.gov/MapClick.php?lat={lat:.1f}&lon={lon:.1f}"
         fc = get(point["forecast"])["properties"]
         record["forecast_updated"] = fc.get("updateTime") or fc.get("generatedAt")
         record["periods"] = [
