@@ -1,76 +1,76 @@
 {
-  "received_utc": "2026-11-23T09:40:12+00:00",
+  "received_utc": "2026-11-24T09:40:23+00:00",
   "city": "Middletown",
   "state": "KY",
   "source": "National Weather Service",
   "periods": [
     {
       "name": "Overnight",
-      "temp": 40,
+      "temp": 29,
       "unit": "F",
-      "wind": "13 mph NW",
-      "precip_pct": 6,
-      "detail": "Cloudy, with a low around 40. Northwest wind around 13 mph. New rainfall amounts less than a tenth of an inch possible."
-    },
-    {
-      "name": "Monday",
-      "temp": 51,
-      "unit": "F",
-      "wind": "8 to 12 mph N",
+      "wind": "6 mph NE",
       "precip_pct": 0,
-      "detail": "Sunny, with a high near 51. North wind 8 to 12 mph. New rainfall amounts less than a tenth of an inch possible."
-    },
-    {
-      "name": "Monday Night",
-      "temp": 27,
-      "unit": "F",
-      "wind": "7 mph N",
-      "precip_pct": 0,
-      "detail": "Clear, with a low around 27. North wind around 7 mph."
+      "detail": "Clear, with a low around 29. Northeast wind around 6 mph."
     },
     {
       "name": "Tuesday",
-      "temp": 48,
+      "temp": 46,
       "unit": "F",
       "wind": "7 to 12 mph NE",
       "precip_pct": 0,
-      "detail": "Mostly sunny, with a high near 48. Northeast wind 7 to 12 mph."
+      "detail": "Sunny, with a high near 46. Northeast wind 7 to 12 mph, with gusts as high as 21 mph."
     },
     {
       "name": "Tuesday Night",
-      "temp": 31,
+      "temp": 33,
       "unit": "F",
-      "wind": "8 mph NE",
-      "precip_pct": 5,
-      "detail": "Mostly cloudy, with a low around 31. Northeast wind around 8 mph."
+      "wind": "9 mph NE",
+      "precip_pct": 6,
+      "detail": "Mostly cloudy, with a low around 33. Northeast wind around 9 mph."
     },
     {
       "name": "Wednesday",
       "temp": 50,
       "unit": "F",
-      "wind": "8 mph E",
-      "precip_pct": 34,
-      "detail": "A chance of rain showers after 7am. Cloudy, with a high near 50. Chance of precipitation is 30%."
+      "wind": "8 mph NE",
+      "precip_pct": 11,
+      "detail": "Mostly cloudy, with a high near 50. Northeast wind around 8 mph."
     },
     {
       "name": "Wednesday Night",
-      "temp": 38,
+      "temp": 40,
       "unit": "F",
-      "wind": "6 to 9 mph NE",
-      "precip_pct": 80,
-      "detail": "Rain showers. Cloudy, with a low around 38. Chance of precipitation is 80%."
+      "wind": "10 mph NE",
+      "precip_pct": 97,
+      "detail": "Rain showers after 7pm. Cloudy, with a low around 40. Northeast wind around 10 mph. Chance of precipitation is 100%. New rainfall amounts between a half and three quarters of an inch possible."
     },
     {
       "name": "Thanksgiving Day",
       "temp": 48,
       "unit": "F",
-      "wind": "8 to 13 mph N",
-      "precip_pct": 80,
-      "detail": "Rain showers. Mostly cloudy, with a high near 48. Chance of precipitation is 80%."
+      "wind": "13 mph N",
+      "precip_pct": 99,
+      "detail": "Rain showers. Cloudy, with a high near 48. Chance of precipitation is 100%. New rainfall amounts between 1 and 2 inches possible."
+    },
+    {
+      "name": "Thursday Night",
+      "temp": 34,
+      "unit": "F",
+      "wind": "14 to 17 mph SW",
+      "precip_pct": 95,
+      "detail": "Rain showers before 1am, then rain and snow showers. Cloudy, with a low around 34. Chance of precipitation is 100%."
+    },
+    {
+      "name": "Friday",
+      "temp": 46,
+      "unit": "F",
+      "wind": "14 to 17 mph W",
+      "precip_pct": 76,
+      "detail": "Rain showers before 1pm. Mostly cloudy, with a high near 46. Chance of precipitation is 80%."
     }
   ],
   "nws_place": "Middletown, KY",
   "source_url": "https://forecast.weather.gov/MapClick.php?lat=38.2&lon=-85.5",
-  "forecast_updated": "2026-11-23T07:21:38+00:00",
+  "forecast_updated": "2026-11-24T08:36:05+00:00",
   "alerts": []
 }
