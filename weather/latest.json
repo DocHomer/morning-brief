@@ -1,76 +1,76 @@
 {
-  "received_utc": "2026-11-27T09:40:11+00:00",
+  "received_utc": "2026-11-28T09:40:12+00:00",
   "city": "Middletown",
   "state": "KY",
   "source": "National Weather Service",
   "periods": [
     {
       "name": "Overnight",
-      "temp": 38,
+      "temp": 34,
       "unit": "F",
-      "wind": "15 mph W",
-      "precip_pct": 87,
-      "detail": "Rain showers. Cloudy, with a low around 38. West wind around 15 mph. Chance of precipitation is 90%. New rainfall amounts less than a tenth of an inch possible."
-    },
-    {
-      "name": "Friday",
-      "temp": 40,
-      "unit": "F",
-      "wind": "17 mph W",
-      "precip_pct": 71,
-      "detail": "Rain showers likely before 5pm. Cloudy, with a high near 40. West wind around 17 mph, with gusts as high as 25 mph. Chance of precipitation is 70%. New rainfall amounts less than a tenth of an inch possible."
-    },
-    {
-      "name": "Friday Night",
-      "temp": 31,
-      "unit": "F",
-      "wind": "8 to 15 mph W",
-      "precip_pct": 10,
-      "detail": "Mostly cloudy, with a low around 31. West wind 8 to 15 mph."
+      "wind": "9 mph SW",
+      "precip_pct": 0,
+      "detail": "Partly cloudy, with a low around 34. Southwest wind around 9 mph."
     },
     {
       "name": "Saturday",
-      "temp": 52,
+      "temp": 53,
       "unit": "F",
-      "wind": "8 to 12 mph SW",
+      "wind": "7 to 12 mph SW",
       "precip_pct": 0,
-      "detail": "Mostly sunny, with a high near 52. Southwest wind 8 to 12 mph."
+      "detail": "Partly sunny, with a high near 53. Southwest wind 7 to 12 mph."
     },
     {
       "name": "Saturday Night",
-      "temp": 40,
+      "temp": 39,
       "unit": "F",
-      "wind": "6 to 9 mph S",
-      "precip_pct": 13,
-      "detail": "Mostly cloudy, with a low around 40. South wind 6 to 9 mph."
+      "wind": "5 to 8 mph S",
+      "precip_pct": 6,
+      "detail": "Mostly cloudy, with a low around 39. South wind 5 to 8 mph."
     },
     {
       "name": "Sunday",
-      "temp": 53,
+      "temp": 58,
       "unit": "F",
-      "wind": "10 to 20 mph S",
-      "precip_pct": 99,
-      "detail": "Rain showers after 7am. Cloudy, with a high near 53. Chance of precipitation is 100%. New rainfall amounts between a quarter and half of an inch possible."
+      "wind": "9 to 18 mph S",
+      "precip_pct": 90,
+      "detail": "Rain showers between 8am and 1pm, then showers and thunderstorms. Mostly cloudy, with a high near 58. South wind 9 to 18 mph, with gusts as high as 31 mph. Chance of precipitation is 90%. New rainfall amounts between a quarter and half of an inch possible."
     },
     {
       "name": "Sunday Night",
-      "temp": 30,
+      "temp": 33,
       "unit": "F",
-      "wind": "7 to 20 mph W",
-      "precip_pct": 95,
-      "detail": "Rain showers before 1am. Mostly cloudy, with a low around 30. Chance of precipitation is 100%."
+      "wind": "13 to 20 mph W",
+      "precip_pct": 80,
+      "detail": "Showers and thunderstorms before 1am. Mostly cloudy, with a low around 33. West wind 13 to 20 mph, with gusts as high as 37 mph. Chance of precipitation is 80%. New rainfall amounts between a quarter and half of an inch possible."
     },
     {
       "name": "Monday",
-      "temp": 46,
+      "temp": 45,
       "unit": "F",
-      "wind": "3 to 7 mph W",
-      "precip_pct": 4,
-      "detail": "Mostly sunny, with a high near 46."
+      "wind": "3 to 10 mph W",
+      "precip_pct": 10,
+      "detail": "Mostly sunny, with a high near 45."
+    },
+    {
+      "name": "Monday Night",
+      "temp": 26,
+      "unit": "F",
+      "wind": "0 to 3 mph S",
+      "precip_pct": 0,
+      "detail": "Partly cloudy, with a low around 26."
+    },
+    {
+      "name": "Tuesday",
+      "temp": 51,
+      "unit": "F",
+      "wind": "6 mph SE",
+      "precip_pct": 0,
+      "detail": "Mostly sunny, with a high near 51."
     }
   ],
   "nws_place": "Middletown, KY",
   "source_url": "https://forecast.weather.gov/MapClick.php?lat=38.2&lon=-85.5",
-  "forecast_updated": "2026-11-27T06:26:03+00:00",
+  "forecast_updated": "2026-11-28T06:55:59+00:00",
   "alerts": []
 }
